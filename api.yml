@@ -26,6 +26,57 @@ paths:
                   type: array
                   items:
                    $ref: '#/components/schemas/Book'
+      put:
+        summary: Create or update of list of books 
+        operationId: createUpdateBooks
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                 type: object
+                properties:
+                  id:
+                    type: string
+                  bookname:
+                    type: string
+        responses:
+          200:
+            description: The created or update book
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Book'
+components:
+  schemas:
+    Book:
+      type: object                   
+      properties:
+                    id:
+                      type: string
+                    code:
+                      type: string
+                      example: BOOK_001
+                    bookname:
+                      type: string
+                    author:
+                      type: string
+                    pabeNumbers:
+                      type: integer
+                    releaseDate:
+                      type: string
+                      format: date
+                    topic:
+                      $ref: '#/components/schemas/Topic'
+    Topic:
+      type: string
+      enum:
+        - ROMANCE
+        - COMEDY
+        - OTHER
 
 
 
